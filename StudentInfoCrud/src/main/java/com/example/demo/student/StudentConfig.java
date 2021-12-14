@@ -19,8 +19,7 @@ public class StudentConfig {
 
                     "Ahnaf",
                     "ahnaftahseen@gmail.com",
-                    LocalDate.of(1995, Month.SEPTEMBER, 1),
-                    27
+                    LocalDate.of(1995, Month.SEPTEMBER, 1)
 
             );
 
@@ -28,8 +27,7 @@ public class StudentConfig {
 
                     "Shuvo",
                     "shuvo@gmail.com",
-                    LocalDate.of(1995, Month.SEPTEMBER, 1),
-                    27
+                    LocalDate.of(1995, Month.SEPTEMBER, 1)
 
             );
 
