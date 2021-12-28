@@ -4,22 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table (
     name = "posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
 )
+
 public class Post{
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(
-        strategy = GenerationType.IDENTITY
+        strategy = GenerationType.SEQUENCE
     )
     private Long id;
     @Column(
