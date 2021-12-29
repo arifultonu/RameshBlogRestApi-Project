@@ -8,13 +8,14 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table (
     name = "posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
 )
+@Data
 public class Post{
 
     @Id
