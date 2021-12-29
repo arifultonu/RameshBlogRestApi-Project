@@ -15,7 +15,6 @@ import javax.persistence.*;
 @Table (
     name = "posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
 )
-
 public class Post{
 
     @Id
