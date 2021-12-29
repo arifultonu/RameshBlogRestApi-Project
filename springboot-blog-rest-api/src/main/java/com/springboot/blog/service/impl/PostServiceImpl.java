@@ -14,6 +14,7 @@ public class PostServiceImpl implements PostService {
 
 
     public PostServiceImpl(PostRepository postRepository) {
+
         this.postRepository = postRepository;
     }
 
@@ -22,8 +23,18 @@ public class PostServiceImpl implements PostService {
 
         //conver DTO to Entity
         Post post = new Post();
-        post.getTitle(postDto.getTitle());
+        post.setTitle(postDto.getTitle());
 
-        return null;
+        Post newPost = postRepository.save(post);
+
+        //convert entity to dto
+        PostDto postResponse = new PostDto();
+        postResponse.setId(newPost.getId());
+        postResponse.setTitle(newPost.getTitle());
+        postResponse.setDescription(newPost.getDescription());
+        postResponse.setContent(newPost.getContent());
+
+
+        return postResponse;
     }
 }

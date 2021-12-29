@@ -9,29 +9,30 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table (
     name = "posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
 )
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Post{
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     @Column(
             name = "title", nullable = false
     )
     private String title;
+
     @Column(
             name = "description", nullable = false
     )
     private String description;
+
     @Column(
             name = "content", nullable = false
     )
