@@ -7,7 +7,8 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -37,5 +38,8 @@ public class Post{
             name = "content", nullable = false
     )
     private String content;
+
+    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Comment> comments = new HashSet<>();
 
 }
