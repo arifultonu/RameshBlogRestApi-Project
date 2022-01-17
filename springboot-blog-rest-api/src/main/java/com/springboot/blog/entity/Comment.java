@@ -13,8 +13,20 @@ import javax.persistence.*;
 @Table(name = "comments")
 public class Comment {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "comment_id_gen",
+            sequenceName = "comment_id_gen",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "comment_id_gen"
+    )
     private long id;
 
     private String name;
