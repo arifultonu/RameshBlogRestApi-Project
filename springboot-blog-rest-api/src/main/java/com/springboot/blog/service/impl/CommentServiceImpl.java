@@ -33,7 +33,7 @@ public class CommentServiceImpl implements CommentService {
                 () -> new ResourceNotFoundException("Post", "id", postId));
 
         //set post to comment entity
-        comment.setPosts(post);
+        comment.setPost(post);
 
         //comment entity to DB
         Comment newComment = commentRepository.save(comment);
