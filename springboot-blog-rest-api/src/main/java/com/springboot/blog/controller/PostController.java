@@ -4,6 +4,10 @@ import com.springboot.blog.payload.PostDto;
 import com.springboot.blog.payload.PostResponse;
 import com.springboot.blog.service.PostService;
 import com.springboot.blog.utils.AppConstants;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +25,13 @@ public class PostController {
         this.postService = postService;
     }
 
+
+    @Operation(summary = "This is to insert post in the Db.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Saved post from Db.",
+                    content = {@Content(mediaType = "application/json")}),
+    })
     @PreAuthorize("hasRole('ADMIN')")
     //create blog post
     @PostMapping

@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -49,6 +50,28 @@ public class Post{
     private String content;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Comment> comments = new HashSet<>();
+    private List<Comment> comments;
+
+    public Post addComment(Comment comment)
+    {
+        comments.add(comment);
+        comment.setPost(this);
+        return this;
+    }
+
+    public Post removeComment(Comment comment)
+    {
+        comments.remove(comment);
+        comment.setPost(null);
+        return this;
+    }
+
+//    public Vendor removeClient(Client client)
+//    {
+//        clients.remove(client);
+//        clients.setVendor(null);
+//        return this;
+//    }
+
 
 }
