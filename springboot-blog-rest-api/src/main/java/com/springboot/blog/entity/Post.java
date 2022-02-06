@@ -29,7 +29,7 @@ public class Post{
             initialValue = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = GenerationType.AUTO,
             generator = "post_id_gen"
     )
     private Long id;
@@ -52,26 +52,7 @@ public class Post{
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
 
-    public Post addComment(Comment comment)
-    {
-        comments.add(comment);
-        comment.setPost(this);
-        return this;
-    }
 
-    public Post removeComment(Comment comment)
-    {
-        comments.remove(comment);
-        comment.setPost(null);
-        return this;
-    }
-
-//    public Vendor removeClient(Client client)
-//    {
-//        clients.remove(client);
-//        clients.setVendor(null);
-//        return this;
-//    }
 
 
 }

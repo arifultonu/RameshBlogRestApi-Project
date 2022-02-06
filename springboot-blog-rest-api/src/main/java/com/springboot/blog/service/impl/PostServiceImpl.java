@@ -89,8 +89,23 @@ public class PostServiceImpl implements PostService {
         post.setDescription(postDto.getDescription());
         post.setContent(postDto.getContent());
 
-        Post updatePost = postRepository.save(post);
-        return mapToDto(updatePost);
+        Post updatedPost = postRepository.save(post);
+        return mapToDto(updatedPost);
+    }
+
+
+    public PostDto updatePost1(PostDto postDto, long id) {
+        //get post by id from the daabase
+        Post post = postRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Post", "id", id));
+
+        //we will not use mapToEntity() function cause it returns post object without id and creates new post
+        Post updatedPost = mapToEntity(postDto);
+        updatedPost.setId(id);
+
+        postRepository.save(updatedPost);
+
+        return mapToDto(updatedPost);
     }
 
     @Override

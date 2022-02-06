@@ -26,7 +26,7 @@ public class Comment {
             initialValue = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = GenerationType.AUTO,
             generator = "comment_id_gen"
     )
     private long id;
@@ -36,7 +36,7 @@ public class Comment {
     private String body;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "postId", nullable = false)
     private Post post;
 }
